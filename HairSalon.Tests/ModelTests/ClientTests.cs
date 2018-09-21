@@ -14,7 +14,7 @@ namespace HairSalon.Tests
     }
     public ClientTests()
     {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=hair_salon_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=chan_lee_test;";
     }
     [TestMethod]
     public void GetAll_DbStartsEmpty_0()

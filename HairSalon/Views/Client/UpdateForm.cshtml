@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+  <h2>Edit @Model["client"].name </h2>
+  <form action='/clients/@Model["client"].id/update' method='post'>
+    <div class="form-group">
+      <label for='newName'>Client Name</label>
+      <input id='newName' name='newName' type='text'>
+
+      <label for='newAppointment'>Appointment</label>
+      <input id='newAppointment' name='newAppointment' type='text'>
+
+      <select name="newStylistId">
+        @foreach (var stylist in Model["allStylists"])
+        {
+          <option value=@stylist.id>@stylist.name</option>
+        }
+      </select>
+    </div>
+    <button type='submit' class='btn btn-danger'>Add Item</button>
+  </form>
+
+  <a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>
+  <a href='/stylists/{@Model.id}'><button class='btn btn-info'>Back to Stylist</button></a>
+  <a href='/'><button class='btn btn-success'>Back Home</button></a>
+</div>

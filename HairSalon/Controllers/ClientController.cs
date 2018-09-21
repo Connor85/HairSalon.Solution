@@ -38,7 +38,7 @@ namespace HairSalon.Controllers
     }
 
 
-    [HttpGet("/clients/{id}/update")]
+    [HttpGet("/clients/{clientId}/update")]
     public ActionResult UpdateForm(int id)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
@@ -49,19 +49,22 @@ namespace HairSalon.Controllers
       return View(model);
     }
 
-    [HttpPost("/clients/{id}/update")]
+    [HttpPost("/clients/{clientId}/update")]
     public ActionResult Update(int id, string newName, string newAppointment, int newStylistId)
     {
       Client thisClient = Client.Find(id);
       thisClient.Edit(newName, newAppointment, newStylistId);
-      return RedirectToAction("Index");
+      return RedirectToAction("Index", new {stylistId = thisClient.id});
     }
 
-    [HttpGet("/clients/{id}/delete")]
-    public ActionResult DeleteClient(int id)
+    [HttpGet("/clients/{itemId}/delete")]
+    public ActionResult DeleteClient(int itemId)
     {
-      Client.Delete(id);
-      return RedirectToAction("Index");
+      Client thisClient = Client.Find(itemId)
+      Client.Delete(itemId);
+      return RedirectToAction("Index", new{stylistId = thisClient.id});
     }
+
+
   }
 }

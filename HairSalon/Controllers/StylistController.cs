@@ -34,11 +34,34 @@ namespace AssetAllocation.Controllers
         return RedirectToAction("Index");
       }
 
-      [HttpGet("/stylists/{id}")]
-      public ActionResult Details(int id)
+      [HttpGet("/stylists/{StylistId}")]
+      public ActionResult Details(int StylistId)
       {
         Stylist thisClass = Stylist.Find(id);
         return View(thisClass);
+      }
+
+      [HttpGet("/stylists/{stylistId}/update")]
+      public ActionResult UpdateForm(int stylistId)
+      {
+          Stylist newStylist = Stylist.Find(stylistId);
+          return View(newStylist);
+      }
+
+      [HttpPost("/stylists/{stylistId}/update")]
+      public ActionResult Update(int stylistId, string newName, int newIncome)
+      {
+          Stylist newStylist = Stylist.Find(stylistId);
+          newStylist.Edit(newName, newIncome);
+          return RedirectToAction("Details", new {StylistId = newStylist.id});
+      }
+
+      [HttpGet("/stylists/{stylistId}/delete")]
+      public ActionResult DeleteItem(int stylistId)
+      {
+          Stylist newStylist = Stylist.Find(stylistId);
+          newStylist.Delete();
+          return RedirectToAction("Index");
       }
     }
 }

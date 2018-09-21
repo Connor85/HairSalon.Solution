@@ -4,40 +4,40 @@ using HairSalon.Models;
 
 namespace AssetAllocation.Controllers
 {
-    public class AssetClassController : Controller
+    public class StylistController : Controller
     {
-      [HttpGet("/asset-classes")]
+      [HttpGet("/stylists")]
       public ActionResult Index()
       {
-        List<AssetClass> allAssetClasses = AssetClass.GetAll();
-        return View(allAssetClasses);
+        List<Stylist> allStylists = Stylist.GetAll();
+        return View(allStylists);
       }
 
-      [HttpGet("/asset-classes/new")]
+      [HttpGet("/stylists/new")]
       public ActionResult CreateForm()
       {
         return View();
       }
 
-      [HttpGet("/asset-classes/delete")]
+      [HttpGet("/stylists/delete")]
       public ActionResult DeleteAll()
       {
-        AssetClass.DeleteAll();
+        Stylist.DeleteAll();
         return RedirectToAction("Index");
       }
 
-      [HttpPost("/asset-classes")]
-      public ActionResult Create(string className, int classVolume)
+      [HttpPost("/stylists")]
+      public ActionResult Create(string stylistName, int stylistIncome)
       {
-        AssetClass newAssetClass = new AssetClass(className, classVolume);
-        newAssetClass.Save();
+        Stylist newStylist = new Stylist(stylistName, stylistIncome);
+        newStylist.Save();
         return RedirectToAction("Index");
       }
 
-      [HttpGet("/asset-classes/{id}")]
+      [HttpGet("/stylists/{id}")]
       public ActionResult Details(int id)
       {
-        AssetClass thisClass = AssetClass.Find(id);
+        Stylist thisClass = Stylist.Find(id);
         return View(thisClass);
       }
     }

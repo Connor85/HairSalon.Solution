@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+  <h1>All Clients</h1>
+  <ul>
+    @foreach(var client in Model)
+    {
+      <li><a href = '/stylists/@Model.id/clients/@client.id'>@client.name | appointment on @client.appointment</a></li>
+    }
+  </ul>
+  <a href="/"><button class="btn btn-success">Back Home</button></a>
+  <a href="/stylists"><button class="btn btn-success">View all Stylists</button></a>
+</div>

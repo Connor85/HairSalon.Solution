@@ -2,14 +2,19 @@
   Layout = "_Layout";
 }
 
-<h2>@Model.name Class</h2>
+<h2>@Model.name 's Clients</h2>
+
+@if (@Model.GetClients().Count ==0)
+{
+  <h4>There is no client.</h4>
+}
 <ul>
   @foreach (var client in @Model.GetClients())
   {
-    <h4><a href='/stylists/@Model.id/clients/@client.id'>@client.name</a> | <a href="/stylists/@Model.id()/update">Update</a> | <a href="/stylists/@Model.id/delete">Delete</a></h4>
-    <p>Income: @Model.income</p>
+    <h4><a href='/stylists/@client.id/clients/@client.id'>@client.name</a> | <a href="/clients/@client.id/update">Update</a> | <a href="/clients/@client.id/delete">Delete</a></h4>
+    <p>Appointment: @client.appointment</p>
   }
 </ul>
-<a href='/stylists/@Model.id/stylists/new'><button class='btn btn-danger'>Add Asset Type</button></a>
-<a href='/stylists'><button class='btn btn-info'>View Asset Classes</button></a>
+<a href='/stylists/@Model.id/clients/new'><button class='btn btn-danger'>Add Client</button></a>
+<a href='/stylists'><button class='btn btn-info'>Back to Stylists</button></a>
 <a href='/'><button class='btn btn-success'>Back Home</button></a>

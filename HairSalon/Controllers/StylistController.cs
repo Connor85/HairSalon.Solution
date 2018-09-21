@@ -37,7 +37,7 @@ namespace AssetAllocation.Controllers
       [HttpGet("/stylists/{StylistId}")]
       public ActionResult Details(int StylistId)
       {
-        Stylist thisClass = Stylist.Find(id);
+        Stylist thisClass = Stylist.Find(StylistId);
         return View(thisClass);
       }
 
@@ -59,8 +59,8 @@ namespace AssetAllocation.Controllers
       [HttpGet("/stylists/{stylistId}/delete")]
       public ActionResult DeleteItem(int stylistId)
       {
-          Stylist newStylist = Stylist.Find(stylistId);
-          newStylist.Delete();
+          // Stylist newStylist = Stylist.Find(stylistId);
+          Stylist.Delete(stylistId);
           return RedirectToAction("Index");
       }
     }

@@ -9,10 +9,10 @@ namespace HairSalon.Models
   {
     public int id {get; set;}
     public string name {get; set;}
-    public int appointment {get; set;}
+    public string appointment {get; set;}
     public int stylist_id {get; set;}
 
-    public Client (string clientName, int clientAppointment, int stylistId, int clientId)
+    public Client (string clientName, string clientAppointment, int stylistId, int clientId=0)
     {
       id = clientId;
       name = clientName;
@@ -135,7 +135,7 @@ namespace HairSalon.Models
       cmd.Parameters.Add(SearchId);
 
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-      int clientId = 0;
+
       string clientName = "";
       string clientAppointment = "";
       int clientStylistId = 0;
@@ -162,7 +162,7 @@ namespace HairSalon.Models
       conn.Open();
 
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"UPDATE clients SET name = @newClientName, appointment = @newClientAppointment stylist_id = @newStylistId WHERE id = @searchId;";
+      cmd.CommandText = @"UPDATE clients SET name = @newClientName, appointment = @newClientAppointment, stylist_id = @newStylistId WHERE id = @searchId;";
 
       MySqlParameter searchId = new MySqlParameter();
       searchId.ParameterName = "@searchId";

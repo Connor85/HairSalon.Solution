@@ -3,7 +3,7 @@
 }
   <h2>Add a new client to @Model.name</h2>
   <form action='/clients' method='post'>
-    <input id='stylistId' name='stylistId' type='hidden' value='@Model.id'>
+    <input id='clientStylistId' name='clientStylistId' type='hidden' value='@Model.id'>
     <div class="form-group">
       <label for='clientName'>Client Name</label>
       <input id='clientName' name='clientName' type='text'>
@@ -11,7 +11,7 @@
       <label for='clientAppointment'>Appointment</label>
       <input id='clientAppointment' name='clientAppointment' type='text'>
     </div>
-    <button type='submit' class='btn btn-danger'>Add Item</button>
+    <button type='submit' class='btn btn-danger'>Submit</button>
   </form>
 
   <a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>

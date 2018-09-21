@@ -1,26 +1,29 @@
 @{
   Layout = "_Layout";
 }
-  <h2>Edit @Model["client"].name </h2>
+  <h2>Edit @Model["client"].name</h2>
+  <h3>Id: @Model["client"].id</h3>
   <form action='/clients/@Model["client"].id/update' method='post'>
+  <input id='clientId' name='clientId' type='hidden' value='@Model["client"].id'>
     <div class="form-group">
       <label for='newName'>Client Name</label>
-      <input id='newName' name='newName' type='text'>
+      <input id='newName' name='newName' type='text' value='@Model["client"].name'>
 
       <label for='newAppointment'>Appointment</label>
       <input id='newAppointment' name='newAppointment' type='text'>
 
+      <label for='newStylistId'>Stylist</label>
       <select name="newStylistId">
         @foreach (var stylist in Model["allStylists"])
         {
-          <option value=@stylist.id>@stylist.name</option>
+          <option value="@stylist.id">@stylist.name</option>
         }
       </select>
     </div>
-    <button type='submit' class='btn btn-danger'>Add Item</button>
+    <button type='submit' class='btn btn-danger'>Edit Client</button>
   </form>
 
   <a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>
-  <a href='/stylists/{@Model.id}'><button class='btn btn-info'>Back to Stylist</button></a>
+  <a href='/stylists/@Model["client"].stylist_id'><button class='btn btn-info'>Back to Stylist</button></a>
   <a href='/'><button class='btn btn-success'>Back Home</button></a>
 </div>

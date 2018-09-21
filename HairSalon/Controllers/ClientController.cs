@@ -47,10 +47,6 @@ namespace HairSalon.Controllers
     [HttpPost("/clients/{clientId}/update")]
     public ActionResult Update(int clientId, string newName, string newAppointment, int newStylistId)
     {
-      Console.WriteLine(clientId);
-      Console.WriteLine(newName);
-      Console.WriteLine(newAppointment);
-      Console.WriteLine(newStylistId);
       Client thisClient = Client.Find(clientId);
       thisClient.Edit(newName, newAppointment, newStylistId);
       return RedirectToAction("Index", new {stylistId = thisClient.stylist_id});

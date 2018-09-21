@@ -18,6 +18,26 @@ namespace HairSalon.Models
       id = stylistId;
     }
 
+    public override bool Equals(System.Object otherStylist)
+    {
+      if (!(otherStylist is Stylist))
+      {
+        return false;
+      }
+      else
+      {
+        Stylist newStylist = (Stylist) otherStylist;
+        bool areIdsEqual = (this.id == newStylist.id);
+        bool areNamesEqual = (this.name == newStylist.name);
+        return (areIdsEqual && areNamesEqual);
+      }
+    }
+
+    public override int GetHashCode()
+    {
+    return this.id.GetHashCode();
+    }
+
     public static List<Stylist> GetAll()
     {
       List<Stylist> allStylists  = new List<Stylist> ();

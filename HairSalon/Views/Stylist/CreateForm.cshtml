@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+  <h1>Add Stylist</h1>
+  <p>Add a stylist here:</p>
+  <form action="/stylists" method="post">
+    <label for="stylistName"> Stylist: </label>
+    <input id="stylistName" name="stylistName" type="text">
+    <label for="stylistIncome">Volume: </label>
+    <input id="stylistIncome" name="stylistIncome" type="text">
+    <button type="submit" class='btn btn-warning'>Add</button>
+  </form>
+
+  <a href='/stylists'><button class='btn btn-info'>View all stylists</button></a>
+  <a href='/'><button class='btn btn-success'>Back Home</button></a>

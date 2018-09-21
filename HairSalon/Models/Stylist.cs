@@ -5,8 +5,8 @@ using HairSalon;
 
 namespace HairSalon.Models
 {
-    public class Stylist
-    {
+  public class Stylist
+  {
 
-    }
+  }
 }

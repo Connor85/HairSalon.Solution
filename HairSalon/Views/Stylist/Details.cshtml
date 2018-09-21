@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+<h2>@Model.name Class</h2>
+<ul>
+  @foreach (var client in @Model.GetClients())
+  {
+    <h4><a href='/stylists/@Model.id/clients/@client.id'>@client.name</a> | <a href="/stylists/@Model.id()/update">Update</a> | <a href="/stylists/@Model.id/delete">Delete</a></h4>
+    <p>Income: @Model.income</p>
+  }
+</ul>
+<a href='/stylists/@Model.id/stylists/new'><button class='btn btn-danger'>Add Asset Type</button></a>
+<a href='/stylists'><button class='btn btn-info'>View Asset Classes</button></a>
+<a href='/'><button class='btn btn-success'>Back Home</button></a>

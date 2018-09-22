@@ -9,8 +9,8 @@ This program manages the hair salon system. Admin can add a list of the stylists
 
 ## Behavior-driven Development
 
-| Specs    |  Input | Output | Rationale   
-| ------------- |:-------------: |:-------------: |:-------------:|
+| Specs    |  Input | Output | 
+| ------------- |:-------------: |:-------------: |
 |  Program displays a list of all stylists.  | View stylists | List of all stylists |
 |  When user selects a stylist, program displays its clients.  | Stylist clicked | Stylist's list of clients |
 | The website allows user to add new stylist | Add Stylist | List of all stylists |
@@ -37,9 +37,9 @@ This program manages the hair salon system. Admin can add a list of the stylists
 
     USE chan_lee;
 
-    CREATE TABLE stylists (stylist_id serial PRIMARY KEY, name VARCHAR(255), income INT(32));
+    CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), income INT(32));
 
-    CREATE TABLE clients (client_id serial PRIMARY KEY, name VARCHAR(255), appointment VARCHAR(255) stylist_id INT(32));
+    CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), appointment VARCHAR(255) stylist_id INT(32));
 ```
 4. Run local hosting through dotnet run
 ```
@@ -51,7 +51,6 @@ This program manages the hair salon system. Admin can add a list of the stylists
 ## Known Bugs
 
 *None.*
-*Module other than WordCounter is not added yet.*
 
 
 ## Support and contact details

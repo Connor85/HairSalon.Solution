@@ -1,19 +1,20 @@
 @{
   Layout = "_Layout";
 }
-  <h2>Add a new client to @Model.name</h2>
-  <form action='/clients' method='post'>
-    <input id='clientStylistId' name='clientStylistId' type='hidden' value='@Model.id'>
-    <div class="form-group">
-      <label for='clientName'>Client Name</label>
-      <input id='clientName' name='clientName' type='text'>
 
-      <label for='clientAppointment'>Appointment</label>
-      <input id='clientAppointment' name='clientAppointment' type='text'>
-    </div>
-    <button type='submit' class='btn btn-danger'>Submit</button>
-  </form>
+<h2>Add a new client to @Model.name</h2>
+<form action='/clients' method='post'>
+  <input id='clientStylistId' name='clientStylistId' type='hidden' value='@Model.id'>
+  <div class="form-group">
+    <label for='clientName'>Client Name</label>
+    <input id='clientName' name='clientName' type='text'>
 
-  <a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>
-  <a href='/stylists/{@Model.id}'><button class='btn btn-info'>Back to Stylist</button></a>
-  <a href='/'><button class='btn btn-success'>Back Home</button></a>
+    <label for='clientAppointment'>Appointment</label>
+    <input id='clientAppointment' name='clientAppointment' type='text'>
+  </div>
+  <button type='submit' class='btn btn-danger'>Submit</button>
+</form>
+
+<a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>
+<a href='/stylists/{@Model.id}'><button class='btn btn-info'>Back to Stylist</button></a>
+<a href='/'><button class='btn btn-success'>Back Home</button></a>

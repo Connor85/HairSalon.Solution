@@ -10,12 +10,12 @@ namespace HairSalon.Tests
   {
     public StylistTests()
     {
-    DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=hair_salon_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=chan_lee_test;";
     }
     public void Dispose()
     {
-    Client.DeleteAll();
-    Stylist.DeleteAll();
+      Client.DeleteAll();
+      Stylist.DeleteAll();
     }
 
     [TestMethod]

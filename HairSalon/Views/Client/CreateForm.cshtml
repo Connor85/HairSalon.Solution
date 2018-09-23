@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-<h2>Add a new client to @Model.name</h2>
+<h1>Add New Client to @Model.name</h1>
 <form action='/clients' method='post'>
   <input id='clientStylistId' name='clientStylistId' type='hidden' value='@Model.id'>
   <div class="form-group">
@@ -12,9 +12,9 @@
     <label for='clientAppointment'>Appointment</label>
     <input id='clientAppointment' name='clientAppointment' type='text'>
   </div>
-  <button type='submit' class='btn btn-danger'>Submit</button>
+  <button type='submit' class='btn btn-info'>Submit</button>
 </form>
 
 <a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>
 <a href='/stylists/{@Model.id}'><button class='btn btn-info'>Back to Stylist</button></a>
-<a href='/'><button class='btn btn-success'>Back Home</button></a>
+<a href='/'><button class='btn btn-info'>Back Home</button></a>

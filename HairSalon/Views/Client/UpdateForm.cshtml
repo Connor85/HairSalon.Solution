@@ -2,8 +2,7 @@
   Layout = "_Layout";
 }
 
-<h2>Edit @Model["client"].name</h2>
-<h3>Id: @Model["client"].id</h3>
+<h1>EDIT @Model["client"].name</h1>
 <form action='/clients/@Model["client"].id/update' method='post'>
 <input id='clientId' name='clientId' type='hidden' value='@Model["client"].id'>
   <div class="form-group">
@@ -21,10 +20,10 @@
       }
     </select>
   </div>
-  <button type='submit' class='btn btn-danger'>Edit Client</button>
+  <button type='submit' class='btn btn-info'>Edit Client</button>
 </form>
 
 <a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>
 <a href='/stylists/@Model["client"].stylist_id'><button class='btn btn-info'>Back to Stylist</button></a>
-<a href='/'><button class='btn btn-success'>Back Home</button></a>
+<a href='/'><button class='btn btn-info'>Back Home</button></a>
 </div>

@@ -2,26 +2,30 @@
   Layout = "_Layout";
 }
 
-<h2>Stylists</h2>
+<h1>STYLISTS</h1>
 
 @if (@Model.Count ==0)
 {
-  <h4>There is no stylist was added.</h4>
+  <h4>There is no stylist added.</h4>
 
-  <a href='/stylists/new'><button class='btn btn-warning'>Add Stylist</button></a>
+  <a href='/stylists/new'><button class='btn btn-info'>Add Stylist</button></a>
 }
 else
 {
-  @foreach (var stylist in Model)
-  {
-  <h4>
-    <a href='/stylists/@stylist.id'>@stylist.name</a>
-  </h4>
-  <p>Income: @stylist.income</p>
-  <p><a href="/stylists/@stylist.id/update" class="btn btn-secondary">Update</a></p>
-  <p><a href="/stylists/@stylist.id/delete" class="btn btn-secondary">Delete</a></p>
-  }
+  <div class="lists">
+    @foreach (var stylist in Model)
+    {
+    <div class="foreach">
+      <h4>
+        <a href='/stylists/@stylist.id'>@stylist.name</a>
+      </h4>
+      <p>Income: @stylist.income</p>
+      <a href="/stylists/@stylist.id/update" class="btn btn-secondary">Update</a>
+      <a href="/stylists/@stylist.id/delete" class="btn btn-secondary">Delete</a>
+    </div>
+    }
+  </div>
 
-  <a href='/stylists/new'><button class='btn btn-warning'>Add Stylist</button></a>
-  <a href="/allitems"><button class="btn btn-primary">View All Clients</button></a>
+  <a href='/stylists/new'><button class='btn btn-info'>Add Stylist</button></a>
+  <a href="/allitems"><button class="btn btn-info">View All Clients</button></a>
 }

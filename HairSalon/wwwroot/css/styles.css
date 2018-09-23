@@ -1,13 +1,82 @@
+* {
+  color: #BF927E;
+  background-color: black;
+  font-family: 'Noto Serif KR', sans-serif;
+}
+
 form {
   margin: 3%;
 }
-button {
+
+a.btn-info, button.btn-info {
+  color: #f0f0f0;
+  background-color: maroon;
   margin-left: 3%;
   margin-right: 3%;
+  border: 1px solid black;
+}
+
+button.btn-info:hover, a.btn-info:hover {
+    color: #fff;
+    background-color:	#b48811;
+    border-color: gray;
+}
+
+nav.navbar-gold {
+  color: #BF927E;
+}
+
+div a, nav a{
+  color: #BF927E;
+}
+
+div a:hover, nav a:hover{
+  color: #FAFAD2;
 }
 
 div.container-fluid {
-  margin-top: 3%;
+  padding-top: 3%;
   margin-bottom: 3%;
   text-align: center;
+}
+
+div.logo h1 {
+  color: white;
+  letter-spacing: 0px;
+  margin-bottom: 0px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+div.logo p {
+  letter-spacing: 11px;
+  line-height: 0.9;
+  color: red;
+}
+
+img.header {
+  width: 100%;
+  height: auto;
+  position:static;
+  z-index: -1;
+}
+
+a.btn-secondary {
+  background-color: #a2790d;
+  font-size: 0.6rem;
+}
+
+.foreach {
+  float: left;
+  width: 300px;
+  margin-left: 33%;
+  margin-right: 33%;
+  margin-bottom: 3%;
+}
+
+.lists {
+  width: 930px;
+  height: auto;
+  margin-top: 3%;
+  margin-bottom: 5%;
 }

@@ -2,13 +2,13 @@
   Layout = "_Layout";
 }
 
-<h2>Edit @Model.name</h2>
+<h1>Edit @Model.name</h1>
 <form action="/stylists/@Model.id/update" method="post">
   <label for="newName">Name:</label>
   <input name="newName" type="text" value="@Model.name">
 
   <label for="newIncome">Income:</label>
   <input name="newIncome" type="text" value="@Model.income">
-  <button class="btn btn-danger" type="submit">Update</button>
+  <button class="btn btn-info" type="submit">Update</button>
 </form>
-<a href='/'><button class='btn btn-success'>Back Home</button></a>
+<a href='/'><button class='btn btn-info'>Back Home</button></a>

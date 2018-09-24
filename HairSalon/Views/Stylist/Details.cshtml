@@ -12,7 +12,7 @@
   @foreach (var client in @Model.GetClients())
   {
     <div class="foreach">
-      <h4><a href='/stylists/@client.id/clients/@client.id'>@client.name</a> | <a href="/clients/@client.id/update">Update</a> | <a href="/clients/@client.id/delete">Delete</a></h4>
+      <h4><a href='/stylists/@Model.id/clients/@client.id'>@client.name</a> | <a href="/clients/@client.id/update">Update</a> | <a href="/clients/@client.id/delete">Delete</a></h4>
       <p>Appointment: @client.appointment</p>
     </div>
   }

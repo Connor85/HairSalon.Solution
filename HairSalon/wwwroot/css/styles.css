@@ -4,6 +4,9 @@
   font-family: 'Noto Serif KR', sans-serif;
 }
 
+h4 {
+  font-size: 18px;
+}
 form {
   margin: 3%;
 }
@@ -41,6 +44,7 @@ div.container-fluid {
 }
 
 div.logo h1 {
+  font-size: 47px;
   color: white;
   letter-spacing: 0px;
   margin-bottom: 0px;
@@ -49,14 +53,16 @@ div.logo h1 {
 }
 
 div.logo p {
+  font-size: 21px;
   letter-spacing: 11px;
   line-height: 0.9;
   color: red;
+  margin-bottom: 5%;
 }
 
 img.header {
   width: 100%;
-  height: auto;
+  height: 33%;
   position:static;
   z-index: -1;
 }
@@ -67,16 +73,40 @@ a.btn-secondary {
 }
 
 .foreach {
-  float: left;
-  width: 300px;
-  margin-left: 33%;
-  margin-right: 33%;
-  margin-bottom: 3%;
+  text-align: center;
+  margin-bottom: 5%;
 }
 
-.lists {
-  width: 930px;
+.foreach a:first-child {
+  font-size: 25px;
+  margin-right: 1%;
+}
+
+div.lists {
+  margin-left: 33%;
+  margin-right: 33%;
   height: auto;
   margin-top: 3%;
   margin-bottom: 5%;
+}
+
+div h1 {
+  text-transform: uppercase;
+  margin-bottom: 3%;
+}
+
+div button {
+  margin-top: 3%;
+}
+
+form label, form select {
+  margin-left: 3%;
+}
+
+form input, form option {
+  border-color: #BF927E;
+}
+
+form button.btn-info {
+  background-color: #a2790d;
 }

@@ -1,4 +1,4 @@
-# Word Counter
+# Hair Salon
 
 #### by _Chan Lee_ , 09/21/2018
 

@@ -62,7 +62,7 @@ div.logo p {
 
 img.header {
   width: 100%;
-  height: 33%;
+  height: 420px;
   position:static;
   z-index: -1;
 }
@@ -109,4 +109,10 @@ form input, form option {
 
 form button.btn-info {
   background-color: #a2790d;
+}
+
+div.carousel-caption {
+  background-color: none;
+  opacity: 0.7;
+  border-radius: 10px;
 }

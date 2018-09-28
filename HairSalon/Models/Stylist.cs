@@ -244,12 +244,12 @@ namespace HairSalon.Models
       return clients;
     }
 
-    public void AddSpecialty(Speicalty newSpeicalty)
+    public void AddSpecialty(Specialty newSpecialty)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO specialtys_stylists (stylist_id, specialty_id) VALUES (@StylistId, @SpeicaltyId);";
+      cmd.CommandText = @"INSERT INTO specialtys_stylists (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
 
       MySqlParameter stylist_id = new MySqlParameter();
       stylist_id.ParameterName = "@StylistId";
@@ -257,8 +257,8 @@ namespace HairSalon.Models
       cmd.Parameters.Add(stylist_id);
 
       MySqlParameter specialty_id = new MySqlParameter();
-      specialty_id.ParameterName = "@SpeicaltyId";
-      specialty_id.Value = newSpeicalty.id;
+      specialty_id.ParameterName = "@SpecialtyId";
+      specialty_id.Value = newSpecialty.id;
       cmd.Parameters.Add(specialty_id);
 
       cmd.ExecuteNonQuery();
@@ -269,14 +269,14 @@ namespace HairSalon.Models
       }
     }
 
-    public List<Speicalty> GetSpeicaltys()
+    public List<Specialty> GetSpecialtys()
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT specialtys.* FROM stylists
-      JOIN stylists_specialtys ON (stylists.id = stylists_specialtys.stylist_id)
-      JOIN specialtys ON (stylists_specialtys.specialty_id = specialtys.id)
+      JOIN specialtys_stylists ON (stylists.id = specialtys_stylists.stylist_id)
+      JOIN specialtys ON (specialtys_stylists.specialty_id = specialtys.id)
       WHERE stylists.id = @StylistId;";
 
       MySqlParameter stylistIdParameter = new MySqlParameter();
@@ -285,15 +285,15 @@ namespace HairSalon.Models
       cmd.Parameters.Add(stylistIdParameter);
 
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-      List<Speicalty> specialtys = new List<Speicalty>{};
+      List<Specialty> specialtys = new List<Specialty>{};
 
       while(rdr.Read())
       {
         int specialtyId = rdr.GetInt32(0);
         string specialtyName = rdr.GetString(1);
 
-        Speicalty newSpeicalty = new Speicalty(specialtyName, specialtyId);
-        specialtys.Add(newSpeicalty);
+        Specialty newSpecialty = new Specialty(specialtyName, specialtyId);
+        specialtys.Add(newSpecialty);
       }
       conn.Close();
       if (conn != null)

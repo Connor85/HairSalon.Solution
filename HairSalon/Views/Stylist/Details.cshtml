@@ -53,7 +53,7 @@
     <select id="specialtyId" name="specialtyId">
     @foreach(var specialty in @Model["allSpecialtys"])
     {
-      <option class="form-control" value="@specialty.id">@client.name</option>
+      <option class="form-control" value="@specialty.id">@specialty.name</option>
     }
     </select>
   </div>

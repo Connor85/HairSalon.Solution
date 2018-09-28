@@ -2,6 +2,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System;
 using HairSalon.Models;
+using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 
 namespace HairSalon.Tests
 {

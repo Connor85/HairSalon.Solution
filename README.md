@@ -6,6 +6,7 @@
 
 This program manages the hair salon system. Admin can add a list of the stylists, clients and specialties. For each stylist, add clients who see that stylist and possessing specialties. Admin can modify both stylists/clients/specialty values as well as delete the data.
 
+![Screenshot](/HairSalon/wwwroot/img/thumbnail/homepage.png)
 
 ## Behavior-driven Development
 
@@ -75,11 +76,15 @@ This program manages the hair salon system. Admin can add a list of the stylists
       `client_id` int(11) NOT NULL
     );
 ```
-4. Run local hosting through dotnet run
+4. Run the following command to restore HairSalon.csproj file in source directory.
+```
+    $ dotnet restore
+```
+5. Run local hosting through dotnet run
 ```
     $ dotnet run
 ```
-5. Connect to http://localhost:5000 in web browser.
+6. Connect to http://localhost:5000 in web browser.
 
 
 ## Known Bugs

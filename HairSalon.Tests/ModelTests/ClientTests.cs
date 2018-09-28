@@ -10,15 +10,32 @@ namespace HairSalon.Tests
   [TestClass]
   public class ClientTests : IDisposable
   {
+    public ClientTests()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=chan_lee_test;";
+    }
+    public static void DeleteJoin()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM specialtys_stylists;DELETE FROM stylists_clients;";
+
+      cmd.ExecuteNonQuery();
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
     public void Dispose()
     {
       Client.DeleteAll();
       Stylist.DeleteAll();
       Specialty.DeleteAll();
-    }
-    public ClientTests()
-    {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=chan_lee_test;";
+      ClientTests.DeleteJoin();
     }
     [TestMethod]
     public void GetAll_DbStartsEmpty_0()

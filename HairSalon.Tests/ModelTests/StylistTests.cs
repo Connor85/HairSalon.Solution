@@ -15,13 +15,14 @@ namespace HairSalon.Tests
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=chan_lee_test;";
     }
 
-    public static void DeleteAll()
+    //Dispose Join tables.
+    public static void DeleteJoin()
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
 
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE FROM stylists_;";
+      cmd.CommandText = @"DELETE FROM specialtys_stylists;DELETE FROM stylists_clients;";
 
       cmd.ExecuteNonQuery();
 
@@ -36,6 +37,7 @@ namespace HairSalon.Tests
       Client.DeleteAll();
       Stylist.DeleteAll();
       Specialty.DeleteAll();
+      ClientTests.DeleteJoin();
     }
 
     [TestMethod]

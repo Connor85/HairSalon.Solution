@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 28, 2018 at 08:04 PM
+-- Generation Time: Sep 28, 2018 at 09:27 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -46,7 +46,10 @@ INSERT INTO `clients` (`id`, `name`) VALUES
 (12, 'John'),
 (13, 'John'),
 (14, 'John'),
-(15, 'John');
+(15, 'John'),
+(16, 'John'),
+(17, 'John'),
+(18, 'John');
 
 -- --------------------------------------------------------
 
@@ -70,12 +73,8 @@ INSERT INTO `specialtys` (`id`, `name`) VALUES
 (4, 'Conditioning Texture Treatment'),
 (5, 'Blow Dry & Style'),
 (6, 'Updo'),
-(8, 'John'),
-(9, 'John'),
-(10, 'John'),
-(11, 'John'),
-(12, 'John'),
-(13, 'John');
+(15, 'John'),
+(16, 'John');
 
 -- --------------------------------------------------------
 
@@ -99,7 +98,8 @@ INSERT INTO `specialtys_stylists` (`id`, `specialty_id`, `stylist_id`) VALUES
 (4, 2, 4),
 (5, 5, 6),
 (6, 6, 2),
-(7, 6, 4);
+(7, 6, 4),
+(8, 5, 7);
 
 -- --------------------------------------------------------
 
@@ -120,13 +120,9 @@ INSERT INTO `stylists` (`id`, `name`) VALUES
 (2, 'Chandler'),
 (4, 'Monica'),
 (5, 'Joey'),
-(6, 'John'),
 (7, 'John'),
-(8, 'John'),
-(9, 'John'),
-(10, 'John'),
-(11, 'John'),
-(12, 'John');
+(14, 'John'),
+(15, 'John');
 
 -- --------------------------------------------------------
 
@@ -149,7 +145,8 @@ INSERT INTO `stylists_clients` (`id`, `stylist_id`, `client_id`) VALUES
 (2, 5, 8),
 (3, 6, 8),
 (4, 0, 9),
-(5, 2, 9);
+(5, 2, 9),
+(6, 7, 5);
 
 --
 -- Indexes for dumped tables
@@ -193,28 +190,28 @@ ALTER TABLE `stylists_clients`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `specialtys`
 --
 ALTER TABLE `specialtys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `specialtys_stylists`
 --
 ALTER TABLE `specialtys_stylists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `stylists`
 --
 ALTER TABLE `stylists`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `stylists_clients`
 --
 ALTER TABLE `stylists_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;

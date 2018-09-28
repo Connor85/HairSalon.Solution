@@ -2,17 +2,14 @@
   Layout = "_Layout";
 }
 
-<h1>EDIT @Model["client"].name</h1>
+<h1>Edit @Model["client"].name</h1>
 <form action='/clients/@Model["client"].id/update' method='post'>
 <input id='clientId' name='clientId' type='hidden' value='@Model["client"].id'>
   <div class="form-group">
-    <label for='newName'>Client Name</label>
+    <label for='newName'>Client Name: </label>
     <input id='newName' name='newName' type='text' value='@Model["client"].name'>
 
-    <label for='newAppointment'>Appointment</label>
-    <input id='newAppointment' name='newAppointment' type='text'>
-
-    <label for='newStylistId'>Stylist</label>
+    <label for='newStylistId'>Stylist: </label>
     <select name="newStylistId">
       @foreach (var stylist in Model["allStylists"])
       {
@@ -23,7 +20,7 @@
   <button type='submit' class='btn btn-info'>Edit Client</button>
 </form>
 
-<a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>
-<a href='/stylists/@Model["client"].stylist_id'><button class='btn btn-info'>Back to Stylist</button></a>
+<a href='/clients'><button class='btn btn-info'>View clients</button></a>
+<a href='/clients/@Model["client"].id'><button class='btn btn-info'>Cancel Edit</button></a>
 <a href='/'><button class='btn btn-info'>Back Home</button></a>
 </div>

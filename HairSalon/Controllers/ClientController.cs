@@ -17,8 +17,12 @@ namespace HairSalon.Controllers
     [HttpGet("clients/new")]
     public ActionResult CreateForm()
     {
+      Dictionary<string, object> model = new Dictionary <string, object>();
       List<Stylist> allStylists = Stylist.GetAll();
-      return View(allStylists);
+      List<Client> allClients = Client.GetAll();
+      model.Add("allStylists",allStylists);
+      model.Add("allClients",allClients);
+      return View(model);
     }
 
     [HttpPost("/clients")]

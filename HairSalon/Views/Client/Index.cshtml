@@ -2,21 +2,32 @@
   Layout = "_Layout";
 }
 
-<h1>STYLIST @Model.name 'S CLIENTS</h1>
-@if (@Model.GetClients().Count == 0)
+<h1>CLIENTS</h1>
+@if (@Model.["allStylists"].Count == 0)
 {
-  <h4>There is no client for the stylist</h4>
+  <h4>There is no stylist to add client</h4>
+  <p>Please create stylists first</p>
+
+  <a href = '/stylists'><button class='btn btn-info'>View Stylists</button></a>
+  <a href="/"><button class="btn btn-info">Back Home</button></a>
 }
-
-<div class="lists">
-  @foreach (var client in @Model.GetClients())
+else
+{
+  @if (@Model.Count == 0)
   {
-    <div class="foreach">
-      <h4><a href='/stylists/@Model.id/clients/@client.id'>@client.name</a> | <a href="/clients/@client.id/update">Update</a> | <a href="/clients/@client.id/delete">Delete</a></h4>
-      <p>Appointment: @client.appointment</p>
-    </div>
+    <h4>There is no client</h4>
   }
-</div>
 
-<a href = '/stylists/@Model.id/clients/new'><button class='btn btn-info'>Add Client</button></a>
-<a href="/"><button class="btn btn-info">Back Home</button></a>
+  <div class="lists">
+    @foreach (var client in @Model)
+    {
+      <div class="foreach">
+        <h4><a href='/clients/@client.id'>@client.name</a> | <a href="/clients/@client.id/update">Update</a> | <a href="/clients/@client.id/delete">Delete</a></h4>
+      </div>
+    }
+  </div>
+
+  <a href = '/clients/new'><button class='btn btn-info'>Add Client</button></a>
+  <a href = '/stylists'><button class='btn btn-info'>View Stylists</button></a>
+  <a href="/"><button class="btn btn-info">Back Home</button></a>
+}

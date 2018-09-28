@@ -2,21 +2,33 @@
   Layout = "_Layout";
 }
 
-<h1>@Model.name 's Clients</h1>
+<h1>@Model["selectedStylist"].name 's Clients</h1>
 
-@if (@Model.GetClients().Count ==0)
+@if (@Model["stylistClients"].Count ==0)
 {
   <h4>There is no client.</h4>
 }
+  <h4>Clients</h4>
 <ul>
-  @foreach (var client in @Model.GetClients())
+  @foreach (var client in @Model["stylistClients"])
   {
     <div class="foreach">
-      <h4><a href='/stylists/@Model.id/clients/@client.id'>@client.name</a> | <a href="/clients/@client.id/update">Update</a> | <a href="/clients/@client.id/delete">Delete</a></h4>
-      <p>Appointment: @client.appointment</p>
+      <h4><a href='/clients/@client.id'>@client.name</a> | <a href="/clients/@client.id/update">Update</a> | <a href="/clients/@client.id/delete">Delete</a></h4>
     </div>
   }
 </ul>
-<a href='/stylists/@Model.id/clients/new'><button class='btn btn-info'>Add Client</button></a>
+<form action="/stylists/@Model["selectedStylist"].id" method="post">
+  <div class="form-group">
+    <label for="clientId">Add Client: </label>
+    <select id="clientId" name="clientId">
+    @foreach(var client in @Model["allClients"])
+    {
+      <option class="form-control" value="@client.id">@client.name</option>
+    }
+    </select>
+  </div>
+  <button type="submit" class="btn btn-info">Add Client</button>
+</form>
+
 <a href='/stylists'><button class='btn btn-info'>Back to Stylists</button></a>
 <a href='/'><button class='btn btn-info'>Back Home</button></a>

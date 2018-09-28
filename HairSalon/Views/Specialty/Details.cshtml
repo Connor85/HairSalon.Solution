@@ -2,26 +2,33 @@
   Layout = "_Layout";
 }
 
-<h1>Name: @Model["selectedClient"].name</h1>
-<h3>Stylists: </h3>
+<h1>Stylists with @Model["selectedSpecialty"].name</h1>
 
-  @foreach(var stylist in @Model["clientStylists"])
+@if (@Model["specialtyStylists"].Count ==0)
+{
+  <h4>There is no specialty.</h4>
+}
+  <h4>Stylists</h4>
+<ul>
+  @foreach (var specialty in @Model["specialtyStylists"])
   {
-    <h3><a href="/stylists/@stylist.id">@stylist.name</a></h3>
+    <div class="foreach">
+      <h4><a href='/specialtys/@specialty.id'>@specialty.name</a> | <a href="/specialtys/@specialty.id/update">Update</a> | <a href="/specialtys/@specialty.id/delete">Delete</a></h4>
+    </div>
   }
-
-<form action="/clients/@Model["selectedClient"].id" method="post">
+</ul>
+<form action="/specialtys/@Model["selectedSpecialty"].id" method="post">
   <div class="form-group">
-  <label for="stylistId">Add Stylist: </label>
-  <select id="stylistId" name="stylistId">
-  @foreach(var stylist in @Model["allStylists"])
-  {
-    <option class="form-control" value="@stylist.id">@stylist.name</option>
-  }
-  </select>
+    <label for="specialtyId">Add Stylist: </label>
+    <select id="specialtyId" name="specialtyId">
+    @foreach(var specialty in @Model["allStylists"])
+    {
+      <option class="form-control" value="@specialty.id">@specialty.name</option>
+    }
+    </select>
   </div>
-  <button type="submit" class="btn btn-info">Add</button>
+  <button type="submit" class="btn btn-info">Add Stylist</button>
 </form>
 
-<a href = '/clients/@Model["selectedClient"].id/update'><button class='btn btn-info'>Edit Client</button></a>
-<a href = '/clients/@Model["selectedClient"].id'><button class='btn btn-info'>Back to Clients</button></a>
+<a href='/specialtys'><button class='btn btn-info'>Back to Specialties</button></a>
+<a href='/'><button class='btn btn-info'>Back Home</button></a>

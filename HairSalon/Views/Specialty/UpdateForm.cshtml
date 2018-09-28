@@ -2,25 +2,13 @@
   Layout = "_Layout";
 }
 
-<h1>Edit @Model["client"].name</h1>
-<form action='/clients/@Model["client"].id/update' method='post'>
-<input id='clientId' name='clientId' type='hidden' value='@Model["client"].id'>
+<h1>Edit @Model.name</h1>
+<form action="/specialtys/@Model.id/update" method="post">
   <div class="form-group">
-    <label for='newName'>Client Name: </label>
-    <input id='newName' name='newName' type='text' value='@Model["client"].name'>
-
-    <label for='newStylistId'>Stylist: </label>
-    <select name="newStylistId">
-      @foreach (var stylist in Model["allStylists"])
-      {
-        <option value="@stylist.id">@stylist.name</option>
-      }
-    </select>
+  <label for="newName">Field of Specialty:</label>
+  <input name="newName" type="text" value="@Model.name">
   </div>
-  <button type='submit' class='btn btn-info'>Edit Client</button>
+  <button class="btn btn-info" type="submit">Update</button>
 </form>
-
-<a href='/clients'><button class='btn btn-info'>View clients</button></a>
-<a href='/clients/@Model["client"].id'><button class='btn btn-info'>Cancel Edit</button></a>
 <a href='/'><button class='btn btn-info'>Back Home</button></a>
-</div>
+<a href='/specialtys'><button class='btn btn-info'>View Stylists</button></a>

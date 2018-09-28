@@ -2,22 +2,12 @@
   Layout = "_Layout";
 }
 
-<h1>Add New Client</h1>
-<form action='/clients' method='post'>
-  <div class="form-group">
-    <label for='clientName'>Client Name</label>
-    <input id='clientName' name='clientName' type='text'>
-
-    <select name="stylistId">
-      @foreach(var stylist in Model)
-      {
-        <option value="@stylist.id">@stylist.name</option>
-      }
-    </select>
-  </div>
-  <button type='submit' class='btn btn-info'>Submit</button>
+<h1>Add Specialty</h1>
+<form action="/specialtys" method="post">
+  <label for="specialtyName"> Specialty: </label>
+  <input id="specialtyName" name="specialtyName" type="text">
+  <button type="submit" class='btn btn-info'>Add</button>
 </form>
 
-<a href='/stylists'><button class='btn btn-info'>View Stylists</button></a>
-<a href='/clients'><button class='btn btn-info'>View Clients</button></a>
+<a href='/specialtys'><button class='btn btn-info'>View all specialties</button></a>
 <a href='/'><button class='btn btn-info'>Back Home</button></a>

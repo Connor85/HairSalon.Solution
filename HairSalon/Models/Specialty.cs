@@ -185,22 +185,22 @@ namespace HairSalon.Models
       }
     }
 
-    public void AddClient(Client newClient)
+    public void AddStylist(Stylist newStylist)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO specialtys_clients (specialty_id, client_id) VALUES (@SpecialtyId, @ClientId);";
+      cmd.CommandText = @"INSERT INTO specialtys_stylists (specialty_id, stylist_id) VALUES (@SpecialtyId, @StylistId);";
 
       MySqlParameter specialty_id = new MySqlParameter();
       specialty_id.ParameterName = "@SpecialtyId";
       specialty_id.Value = id;
       cmd.Parameters.Add(specialty_id);
 
-      MySqlParameter client_id = new MySqlParameter();
-      client_id.ParameterName = "@ClientId";
-      client_id.Value = newClient.id;
-      cmd.Parameters.Add(client_id);
+      MySqlParameter stylist_id = new MySqlParameter();
+      stylist_id.ParameterName = "@StylistId";
+      stylist_id.Value = newStylist.id;
+      cmd.Parameters.Add(stylist_id);
 
       cmd.ExecuteNonQuery();
       conn.Close();
@@ -210,14 +210,14 @@ namespace HairSalon.Models
       }
     }
 
-    public List<Client> GetClients()
+    public List<Stylist> GetStylists()
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT clients.* FROM specialtys
-      JOIN specialtys_clients ON (specialtys.id = specialtys_clients.specialty_id)
-      JOIN clients ON (specialtys_clients.client_id = clients.id)
+      cmd.CommandText = @"SELECT stylists.* FROM specialtys
+      JOIN specialtys_stylists ON (specialtys.id = specialtys_stylists.specialty_id)
+      JOIN stylists ON (specialtys_stylists.stylist_id = stylists.id)
       WHERE specialtys.id = @SpecialtyId;";
 
       MySqlParameter specialtyIdParameter = new MySqlParameter();
@@ -226,22 +226,22 @@ namespace HairSalon.Models
       cmd.Parameters.Add(specialtyIdParameter);
 
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-      List<Client> clients = new List<Client>{};
+      List<Stylist> stylists = new List<Stylist>{};
 
       while(rdr.Read())
       {
-        int clientId = rdr.GetInt32(0);
-        string clientName = rdr.GetString(1);
+        int stylistId = rdr.GetInt32(0);
+        string stylistName = rdr.GetString(1);
 
-        Client newClient = new Client(clientName, clientId);
-        clients.Add(newClient);
+        Stylist newStylist = new Stylist(stylistName, stylistId);
+        stylists.Add(newStylist);
       }
       conn.Close();
       if (conn != null)
       {
         conn.Dispose();
       }
-      return clients;
+      return stylists;
     }
   }
 }

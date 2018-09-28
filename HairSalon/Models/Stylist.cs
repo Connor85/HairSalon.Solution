@@ -244,6 +244,65 @@ namespace HairSalon.Models
       return clients;
     }
 
+    public void AddSpecialty(Speicalty newSpeicalty)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO specialtys_stylists (stylist_id, specialty_id) VALUES (@StylistId, @SpeicaltyId);";
+
+      MySqlParameter stylist_id = new MySqlParameter();
+      stylist_id.ParameterName = "@StylistId";
+      stylist_id.Value = id;
+      cmd.Parameters.Add(stylist_id);
+
+      MySqlParameter specialty_id = new MySqlParameter();
+      specialty_id.ParameterName = "@SpeicaltyId";
+      specialty_id.Value = newSpeicalty.id;
+      cmd.Parameters.Add(specialty_id);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public List<Speicalty> GetSpeicaltys()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT specialtys.* FROM stylists
+      JOIN stylists_specialtys ON (stylists.id = stylists_specialtys.stylist_id)
+      JOIN specialtys ON (stylists_specialtys.specialty_id = specialtys.id)
+      WHERE stylists.id = @StylistId;";
+
+      MySqlParameter stylistIdParameter = new MySqlParameter();
+      stylistIdParameter.ParameterName = "@StylistId";
+      stylistIdParameter.Value = id;
+      cmd.Parameters.Add(stylistIdParameter);
+
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      List<Speicalty> specialtys = new List<Speicalty>{};
+
+      while(rdr.Read())
+      {
+        int specialtyId = rdr.GetInt32(0);
+        string specialtyName = rdr.GetString(1);
+
+        Speicalty newSpeicalty = new Speicalty(specialtyName, specialtyId);
+        specialtys.Add(newSpeicalty);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return specialtys;
+    }
+
     public static List<Stylist> SearchStylist(string stylistName)
     {
       List<Stylist> allStylists = new List<Stylist>{};

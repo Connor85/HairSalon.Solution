@@ -243,5 +243,35 @@ namespace HairSalon.Models
       }
       return stylists;
     }
+
+    public static List<Specialty> SearchSpecialty(string specialtyName)
+    {
+      List<Specialty> allSpecialtys = new List<Specialty>{};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+
+      cmd.CommandText = @"SELECT * FROM specialtys WHERE name LIKE @searchName;";
+
+      cmd.Parameters.AddWithValue("@searchName", "%" + specialtyName + "%");
+
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      while (rdr.Read())
+      {
+        int specialtyId = rdr.GetInt32(0);
+        string specialtysName = rdr.GetString(1);
+
+        Specialty newSpecialty = new Specialty (specialtysName, specialtyId);
+        allSpecialtys.Add(newSpecialty);
+
+      }
+      conn.Close();
+      if (conn !=null)
+      {
+        conn.Dispose();
+      }
+      return allSpecialtys;
+    }
   }
 }

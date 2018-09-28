@@ -28,6 +28,11 @@ nav.navbar-gold {
   color: #BF927E;
 }
 
+nav a.navbar-brand{
+  text-decoration: none;
+  font-weight: 700;
+}
+
 div a, nav a{
   color: #BF927E;
 }

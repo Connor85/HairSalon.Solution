@@ -77,5 +77,14 @@ namespace HairSalon.Controllers
       Stylist.Delete(stylistId);
       return RedirectToAction("Index");
     }
+
+    [HttpPost("/stylists/search")]
+    public ActionResult Search()
+    {
+      string searchedStylist = Request.Form["searchedStylist"];
+      List<Stylist> foundStylists = Stylist.SearchStylist(searchedStylist);
+      Console.WriteLine(foundStylists);
+      return RedirectToAction("Index",foundStylists);
+    }
   }
 }

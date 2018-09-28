@@ -77,5 +77,14 @@ namespace HairSalon.Controllers
       Specialty.Delete(specialtyId);
       return RedirectToAction("Index");
     }
+
+    [HttpPost("/speicaltys/search")]
+    public ActionResult Search()
+    {
+      string searchedSpecialty = Request.Form["searchedSpecialty"];
+      List<Specialty> foundSpecialtys = Specialty.SearchSpecialty(searchedSpecialty);
+      Console.WriteLine(foundSpecialtys);
+      return RedirectToAction("Index",foundSpecialtys);
+    }
   }
 }

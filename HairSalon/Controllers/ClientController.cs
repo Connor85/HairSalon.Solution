@@ -92,5 +92,14 @@ namespace HairSalon.Controllers
       Client.Delete(clientId);
       return RedirectToAction("Index");
     }
+
+    [HttpPost("/clients/search")]
+    public ActionResult Search()
+    {
+      string searchedClient = Request.Form["searchedClient"];
+      List<Client> foundClients = Client.SearchClient(searchedClient);
+      Console.WriteLine(foundClients);
+      return RedirectToAction("Index",foundClients);
+    }
   }
 }

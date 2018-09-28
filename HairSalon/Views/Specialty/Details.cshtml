@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Name: @Model["selectedClient"].name</h1>
+<h3>Stylists: </h3>
+
+  @foreach(var stylist in @Model["clientStylists"])
+  {
+    <h3><a href="/stylists/@stylist.id">@stylist.name</a></h3>
+  }
+
+<form action="/clients/@Model["selectedClient"].id" method="post">
+  <div class="form-group">
+  <label for="stylistId">Add Stylist: </label>
+  <select id="stylistId" name="stylistId">
+  @foreach(var stylist in @Model["allStylists"])
+  {
+    <option class="form-control" value="@stylist.id">@stylist.name</option>
+  }
+  </select>
+  </div>
+  <button type="submit" class="btn btn-info">Add</button>
+</form>
+
+<a href = '/clients/@Model["selectedClient"].id/update'><button class='btn btn-info'>Edit Client</button></a>
+<a href = '/clients/@Model["selectedClient"].id'><button class='btn btn-info'>Back to Clients</button></a>

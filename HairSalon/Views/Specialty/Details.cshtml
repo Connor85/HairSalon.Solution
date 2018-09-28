@@ -8,7 +8,8 @@
 {
   <h4>There is no specialty.</h4>
 }
-  <h4>Stylists</h4>
+<br>
+<h4>Stylists: </h4>
 <ul>
   @foreach (var specialty in @Model["specialtyStylists"])
   {
@@ -19,15 +20,15 @@
 </ul>
 <form action="/specialtys/@Model["selectedSpecialty"].id" method="post">
   <div class="form-group">
-    <label for="specialtyId">Add Stylist: </label>
-    <select id="specialtyId" name="specialtyId">
-    @foreach(var specialty in @Model["allStylists"])
+    <label for="stylistId">Add Stylist: </label>
+    <select id="stylistId" name="stylistId">
+    @foreach(var stylist in @Model["allStylists"])
     {
-      <option class="form-control" value="@specialty.id">@specialty.name</option>
+      <option class="form-control" value="@stylist.id">@stylist.name</option>
     }
     </select>
   </div>
-  <button type="submit" class="btn btn-info">Add Stylist</button>
+  <button type="submit" class="btn btn-info">Add</button>
 </form>
 
 <a href='/specialtys'><button class='btn btn-info'>Back to Specialties</button></a>

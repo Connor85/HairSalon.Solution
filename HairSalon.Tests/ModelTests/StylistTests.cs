@@ -140,5 +140,26 @@ namespace HairSalon.Tests
       //Assert
       CollectionAssert.AreEqual(expectedClient, clients);
     }
+
+    [TestMethod]
+    public void GetSpecialtys_ReturnMatchingSpecialtys_List()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist ("John");
+      testStylist.Save();
+      Specialty testSpecialty1 = new Specialty("specialty1");
+      testSpecialty1.Save();
+      Specialty testSpecialty2 = new Specialty("specialty2");
+      testSpecialty2.Save();
+      testStylist.AddSpecialty(testSpecialty1);
+      testStylist.AddSpecialty(testSpecialty2);
+      List <Specialty> expectedSpecialty = new List<Specialty>{testSpecialty1, testSpecialty2};
+
+      //Act
+      List <Specialty> specialties = testStylist.GetSpecialtys();
+
+      //Assert
+      CollectionAssert.AreEqual(expectedSpecialty, specialties);
+    }
   }
 }

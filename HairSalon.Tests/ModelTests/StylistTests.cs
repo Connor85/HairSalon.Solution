@@ -16,6 +16,7 @@ namespace HairSalon.Tests
     {
       Client.DeleteAll();
       Stylist.DeleteAll();
+      Specialty.DeleteAll();
     }
 
     [TestMethod]
@@ -83,6 +84,61 @@ namespace HairSalon.Tests
 
     //Assert
     Assert.AreEqual(testStylist, foundStylist);
+    }
+
+    [TestMethod]
+    public void Edit_UpdatesStylistInDatabase_String()
+    {
+      //Arrange
+      string firstName = "John";
+      Stylist testStylist = new Stylist (firstName);
+      testStylist.Save();
+
+      string secondName = "Panatda";
+
+      //Act
+      testStylist.Edit(secondName);
+      Stylist result = Stylist.Find(testStylist.id);
+
+      //Assert
+      Assert.AreEqual(testStylist,result);
+    }
+
+    [TestMethod]
+    public void Delete_DeleteStylistInDatabase_Null()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist ("John");
+      testStylist.Save();
+      int testStylistId = testStylist.id;
+
+      //Act
+      Stylist.Delete(testStylistId);
+      int count = Stylist.GetAll().Count;
+
+      //Assert
+      Assert.AreEqual(0, count);
+    }
+
+    [TestMethod]
+    public void GetClients_ReturnMatchingClients_List()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist ("John");
+      testStylist.Save();
+      Client testClient1 = new Client("clients1");
+      testClient1.Save();
+      Client testClient2 = new Client("clients2");
+      testClient2.Save();
+      testStylist.AddClient(testClient1);
+      testStylist.AddClient(testClient2);
+      List <Client> expectedClient = new List<Client>{testClient1, testClient2};
+
+      //Act
+      List <Client> clients = testStylist.GetClients();
+
+      //Assert
+      CollectionAssert.AreEqual(expectedClient, clients);
     }
   }
 }

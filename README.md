@@ -38,9 +38,42 @@ This program manages the hair salon system. Admin can add a list of the stylists
 ```
     $ cd HairSalon.Solution/HairSalon/
 ```
-3. Import given sql file.
+3. (option1) Go to MySQL from terminal and import given sql file.
 ```
-    > mysql -u yourusername -p yourpassword yourdatabase < chan_lee
+    > mysql -u yourusername -p yourpassword yourdatabase < chan_lee.sql
+```
+   (option2) Create following database from MySQL command line
+```
+    CREATE DATABASE hair_salon;
+
+    USE chan_lee;
+
+    CREATE TABLE `stylists` (
+      `id` int(32) NOT NULL,
+      `name` varchar(255) NOT NULL
+    );
+
+    CREATE TABLE `clients` (
+      `id` int(32) NOT NULL,
+      `name` varchar(255) NOT NULL
+    );
+
+    CREATE TABLE `specialtys` (
+      `id` int(11) NOT NULL,
+      `name` varchar(255) NOT NULL
+    );
+
+    CREATE TABLE `specialtys_stylists` (
+      `id` int(11) NOT NULL,
+      `specialty_id` int(11) NOT NULL,
+      `stylist_id` int(11) NOT NULL
+    )
+
+    CREATE TABLE `stylists_clients` (
+      `id` int(11) NOT NULL,
+      `stylist_id` int(11) NOT NULL,
+      `client_id` int(11) NOT NULL
+    );
 ```
 4. Run local hosting through dotnet run
 ```

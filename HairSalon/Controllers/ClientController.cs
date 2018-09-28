@@ -100,10 +100,11 @@ namespace HairSalon.Controllers
     [HttpPost("/clients/search")]
     public ActionResult Search()
     {
-      string searchedClient = Request.Form["searchedClient"];
+      string userInput = Request.Form["searched"];
+      string searchedClient =
+      char.ToUpper(userInput[0]) + userInput.Substring(1);
       List<Client> foundClients = Client.SearchClient(searchedClient);
-      Console.WriteLine(foundClients);
-      return RedirectToAction("Index",foundClients);
+      return View(foundClients);
     }
   }
 }

@@ -82,10 +82,11 @@ namespace HairSalon.Controllers
     [HttpPost("/speicaltys/search")]
     public ActionResult Search()
     {
-      string searchedSpecialty = Request.Form["searchedSpecialty"];
+      string userInput = Request.Form["searched"];
+      string searchedSpecialty =
+      char.ToUpper(userInput[0]) + userInput.Substring(1);
       List<Specialty> foundSpecialtys = Specialty.SearchSpecialty(searchedSpecialty);
-      Console.WriteLine(foundSpecialtys);
-      return RedirectToAction("Index",foundSpecialtys);
+      return View(foundSpecialtys);
     }
   }
 }

@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Client Search Result</h1>
+
+@if (@Model.Count ==0)
+{
+  <h4>There is no client matched.</h4>
+}
+
+<div class="lists">
+  @foreach (var client in Model)
+  {
+  <div class="foreach">
+    <h4>
+      <a href='/clients/@client.id'>@client.name</a>
+    </h4>
+    <a href="/clients/@client.id/update" class="btn btn-secondary">Update</a>
+    <a href="/clients/@client.id/delete" class="btn btn-secondary">Delete</a>
+  </div>
+  }
+</div>
+
+<a href='/clients/new'><button class='btn btn-info'>Add Client</button></a>
+<a href='/clients/'><button class='btn btn-info'>View All Clients</button></a>
+<a href="/clients"><button class="btn btn-info">View All Clients</button></a>
+@Html.Partial("_SearchBar", "clients")

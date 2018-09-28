@@ -5,7 +5,6 @@ using HairSalon.Controllers;
 using HairSalon.Models;
 
 namespace HairSalon.Tests
-
 {
   [TestClass]
   public class HomeControllerTest : IDisposable

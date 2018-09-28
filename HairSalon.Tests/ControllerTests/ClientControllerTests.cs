@@ -19,7 +19,6 @@ namespace HairSalon.Tests
       Client.DeleteAll();
       Stylist.DeleteAll();
       Specialty.DeleteAll();
-
     }
     [TestMethod]
     public void Details_ReturnsCorrectView_True()

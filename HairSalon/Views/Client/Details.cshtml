@@ -12,13 +12,13 @@
 
 <form action="/clients/@Model["selectedClient"].id" method="post">
   <div class="form-group">
-  <label for="stylistId">Add Stylist: </label>
-  <select id="stylistId" name="stylistId">
-  @foreach(var stylist in @Model["allStylists"])
-  {
-    <option class="form-control" value="@stylist.id">@stylist.name</option>
-  }
-  </select>
+    <label for="stylistId">Add Stylist: </label>
+    <select id="stylistId" name="stylistId">
+    @foreach(var stylist in @Model["allStylists"])
+    {
+      <option class="form-control" value="@stylist.id">@stylist.name</option>
+    }
+    </select>
   </div>
   <button type="submit" class="btn btn-info">Add</button>
 </form>

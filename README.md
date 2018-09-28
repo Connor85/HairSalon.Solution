@@ -7,6 +7,7 @@
 This program manages the hair salon system. Admin can add a list of the stylists, clients and specialties. For each stylist, add clients who see that stylist and possessing specialties. Admin can modify both stylists/clients/specialty values as well as delete the data.
 
 ![Screenshot](/HairSalon/wwwroot/img/thumbnail/screenshot.png)
+![Screenshot](/HairSalon/wwwroot/img/thumbnail/screenshot2.png)
 
 ## Behavior-driven Development
 

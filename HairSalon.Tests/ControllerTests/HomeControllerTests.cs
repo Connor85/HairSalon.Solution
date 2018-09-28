@@ -5,10 +5,21 @@ using HairSalon.Controllers;
 using HairSalon.Models;
 
 namespace HairSalon.Tests
+
 {
   [TestClass]
-  public class HomeControllerTest
+  public class HomeControllerTest : IDisposable
   {
+    public ClientTests()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=chan_lee_test;";
+    }
+    public void Dispose()
+    {
+      Client.DeleteAll();
+      Stylist.DeleteAll();
+      Specialty.DeleteAll();
+    }
     [TestMethod]
     public void Index_ReturnsCorrectView_True()
     {

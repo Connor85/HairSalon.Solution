@@ -8,11 +8,21 @@ using HairSalon.Models;
 namespace HairSalon.Tests
 {
   [TestClass]
-  public class SpecialtyControllerTest
+  public class SpecialtyControllerTest : IDisposable
+  {
+    public ClientTests()
     {
-      [TestMethod]
-      public void Details_ReturnsCorrectView_True()
-      {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=chan_lee_test;";
+    }
+    public void Dispose()
+    {
+      Client.DeleteAll();
+      Stylist.DeleteAll();
+      Specialty.DeleteAll();
+    }
+    [TestMethod]
+    public void Details_ReturnsCorrectView_True()
+    {
       //Arrange
       SpecialtyController controller = new SpecialtyController();
       Specialty testSpecialty = new Specialty("John", 0);

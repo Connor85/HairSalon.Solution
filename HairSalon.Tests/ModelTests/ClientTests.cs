@@ -14,6 +14,7 @@ namespace HairSalon.Tests
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=chan_lee_test;";
     }
+
     public static void DeleteJoin()
     {
       MySqlConnection conn = DB.Connection();

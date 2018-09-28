@@ -1,24 +1,31 @@
-# Word Counter
+# Hair Salon
 
-#### by _Chan Lee_ , 09/21/2018
+#### by _Chan Lee_ , 09/28/2018
 
 ## Description
 
-This program manages the hair salon system. Admin can add a list of the stylists, and for each stylist, add clients who see that stylist . Admin can modify both stylists/clients values as well as delete the data.
+This program manages the hair salon system. Admin can add a list of the stylists, clients and specialties. For each stylist, add clients who see that stylist and possessing specialties. Admin can modify both stylists/clients/specialty values as well as delete the data.
 
 
 ## Behavior-driven Development
 
-| Specs    |  Input | Output | 
+| Specs    |  Input | Output |
 | ------------- |:-------------: |:-------------: |
 |  Program displays a list of all stylists.  | View stylists | List of all stylists |
+|  Program displays a list of all clients.  | View clients | List of all clients |
+|  Program displays a list of all specialties.  | View specialties | List of all specialties |
 |  When user selects a stylist, program displays its clients.  | Stylist clicked | Stylist's list of clients |
 | The website allows user to add new stylist | Add Stylist | List of all stylists |
+| The website allows user to add new client | Add Client | List of all clients |
+| The website allows user to add new specialty | Add Specialty | List of all specialties |
 | The website allows user to add new clients under approached stylist | Add Client | Clients of Selected stylist |
+| The website allows user to add new specialties under approached stylist | Add Specialty | Specialtys of Selected stylist |
 | The website allows user to modify stylist information. | Edit Stylist | Edited description of Stylist |
 | The website allows user to modify client information. | Edit Client | Edited description of Client |
+| The website allows user to modify specialty information. | Edit Specialty | Edited description of Specialty |
 | The website allows user to delete stylist information. | Delete Stylist | List of all stylists |
 | The website allows user to delete client information. | Delete Client | List of all clients |
+| The website allows user to delete specialty information. | Delete Specialty | List of all specialtys |
 
 
 ## Setup/Installation Requirements
@@ -29,17 +36,11 @@ This program manages the hair salon system. Admin can add a list of the stylists
 ```
 2. Navigate into the directory
 ```
-    $ cd WordCount.Solution/WordCounter/
+    $ cd HairSalon.Solution/HairSalon/
 ```
 3. Import given sql file.
 ```
-    CREATE DATABASE chan_lee;
-
-    USE chan_lee;
-
-    CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), income INT(32));
-
-    CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), appointment VARCHAR(255) stylist_id INT(32));
+    > mysql -u yourusername -p yourpassword yourdatabase < chan_lee
 ```
 4. Run local hosting through dotnet run
 ```
